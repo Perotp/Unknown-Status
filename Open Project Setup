@@ -1,0 +1,18 @@
+from openpyxl import load_workbook
+from openpyxl.utils.dataframe import dataframe_to_rows
+import pandas as pd
+
+#   This section loads the Project Number file and sets it to sheet1
+filepath = 'C:\\Users\\10383563\\Downloads\\Proposal Setup Sheet POLAT-0009.xlsx'
+wb = load_workbook(filepath)
+sheet = wb['Customers']
+
+# This section extracts the data from the workbook and makes a dataframe
+required_cols = [1, 2]
+df = pd.read_excel(filepath, sheet_name = 'Customers', header=1, usecols = required_cols)
+print(df)
+
+#  This section sorts the dataFrame by the title DATE
+# sorted_df = df.sort_values(by=['Date'])
+# # print(sorted_df)
+# rowcnt = len(df)
